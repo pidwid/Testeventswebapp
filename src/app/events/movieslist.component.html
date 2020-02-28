@@ -1,0 +1,82 @@
+<!-- 
+USED SIMPLE PREDEFINED SIMPLE ANGULAR MATERIAL LAYOUTS,COMPONENTS AND THEMES
+
+ -->
+
+<div fxLayout="column" style="overflow: hidden;">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between end"
+    class="example-button-row"
+    style="margin-left: 1%;margin-top: 2%;"
+  >
+    <div>
+      <button mat-raised-button color="accent" (click)="addEvents()">
+        Add &#43;
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+  <div class="myclass">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- SerialNo Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+
+      <!-- EventName Column -->
+      <ng-container matColumnDef="eventName">
+        <th mat-header-cell *matHeaderCellDef>Event Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.eventName }}</td>
+      </ng-container>
+
+      <!-- Location Column -->
+      <ng-container matColumnDef="Location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let element">{{ element.Location }}</td>
+      </ng-container>
+
+      <!-- Organizer Column -->
+      <ng-container matColumnDef="Organizer">
+        <th mat-header-cell *matHeaderCellDef>Organizer</th>
+        <td mat-cell *matCellDef="let element">{{ element.Organizer }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+<!-- login and signup modals -->
+<form [formGroup]="eventsAddForm" (ngSubmit)="submitData(eventsAddForm.value)">
+  <div class="modal" *ngIf="addEventsModal">
+    <div class="modal-content">
+      <span class="close" (click)="addEventsModal = false">&times;</span>
+
+      <mat-form-field appearance="standard">
+        <mat-label>EventName</mat-label>
+        <input matInput placeholder="EventName" formControlName="eventName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Location</mat-label>
+        <input matInput placeholder="Location" formControlName="location" />
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Organizer</mat-label>
+        <input matInput placeholder="Organizer" formControlName="organizer" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="addEvents()">
+        Add
+      </button>
+    </div>
+  </div>
+</form>

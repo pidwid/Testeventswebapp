@@ -1,12 +1,8 @@
-<!-- header -->
-<mat-toolbar class="top-level-header" fullscreen> </mat-toolbar>
-
-
 <!-- Signup form -->
 <div class="main-container">
   <mat-card class="sub-container">
     <div>
-      <form (ngSubmit)="onSubmit()" >
+      <form (ngSubmit)="onSubmit()">
         <!-- FULLNAME FIELD -->
         <mat-form-field class="form-field">
           <input
@@ -16,14 +12,14 @@
             pattern="[a-zA-Z ]*"
             required
           />
-          <mat-error *ngIf="fullname.invalid">{{ getUsernameMessage() }}</mat-error> 
-
-          </mat-form-field
+          <mat-error *ngIf="fullname.invalid">{{
+            getUsernameMessage()
+          }}</mat-error> </mat-form-field
         ><br />
         <!-- EMAIL FIELD -->
         <mat-form-field class="form-field">
           <input
-          type="email"
+            type="email"
             matInput
             placeholder="Enter your email"
             [formControl]="email"
@@ -36,7 +32,7 @@
         <mat-form-field class="form-field">
           <input
             matInput
-            minlength=8
+            minlength="8"
             placeholder="Password"
             [type]="hide ? 'password' : 'text'"
             [formControl]="password"
@@ -58,8 +54,7 @@
           <mat-hint
             >Atleast 8 character long. Must have an uppercase letter and an
             integer</mat-hint
-          >
-           </mat-form-field
+          > </mat-form-field
         ><br /><br />
         <!-- SIGNUP BUTTON -->
         <button
